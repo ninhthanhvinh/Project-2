@@ -5754,6 +5754,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1680213339133123953}
   - component: {fileID: 1680213339133123950}
+  - component: {fileID: -7864499158667602560}
   m_Layer: 0
   m_Name: PSRifle
   m_TagString: Untagged
@@ -5806,10 +5807,26 @@ MonoBehaviour:
   tracerEffect: {fileID: 4248827447793293126, guid: 3f5a272ea8ea586428dcae307a2a7f99,
     type: 3}
   target: {fileID: 0}
+  weaponRecoil: {fileID: 0}
   raycastOrigin: {fileID: 1680213338284951841}
   crosshair: {fileID: 0}
   fireRate: 20
   maxBulletsInLoad: 30
+  magazine: {fileID: 3400893841826794176}
+--- !u!114 &-7864499158667602560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680213339133123952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c88bb571e1d0db4dbb9afc79167e1c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 0}
+  verticalRecoil: 1
 --- !u!1 &1680213340186839039
 GameObject:
   m_ObjectHideFlags: 0

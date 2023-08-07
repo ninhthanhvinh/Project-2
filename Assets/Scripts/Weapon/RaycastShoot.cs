@@ -19,17 +19,26 @@ public class RaycastShoot : MonoBehaviour
     private Transform raycastOrigin;
     public Transform crosshair;
     public float fireRate;
-    public int maxBulletsInLoad = 30;
+    public int loadSize = 30;
+
+    public int ammoCount;
+
+
+    public GameObject magazine;
 
     private Ray ray;
     private RaycastHit hitInfo;
     // Start is called before the first frame update
     private void Awake()
     {
-
+        ammoCount = loadSize;
     }
     public void FireShoot()
     {
+        if (ammoCount <= 0)
+        {
+            return;
+        }
         foreach (var muzzleFlash in muzzleFlashs)
         {
             muzzleFlash.Emit(1);
@@ -39,7 +48,7 @@ public class RaycastShoot : MonoBehaviour
 
         var tracer = Instantiate(tracerEffect, ray.origin, Quaternion.identity);
         tracer.AddPosition(ray.origin);
-
+        ammoCount--;
         if (target.position != Vector3.positiveInfinity)
         {
             ray.direction = target.position - raycastOrigin.position;

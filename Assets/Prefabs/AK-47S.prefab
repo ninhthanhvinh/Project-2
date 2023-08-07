@@ -9888,7 +9888,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2514666334164182568}
   - component: {fileID: 2514666334164182571}
-  - component: {fileID: 3691912827332994763}
   m_Layer: 0
   m_Name: AK-47S
   m_TagString: Untagged
@@ -9924,31 +9923,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08ccbaa5db433f4fb5267e637ba875b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: 
   muzzleFlashs:
   - {fileID: 2316440805727627309}
   - {fileID: 2316160230312634507}
+  dmgPerBullet: 0
   hitEffect: {fileID: 8656604428149045906}
-  tracerEffect: {fileID: 4248827447793293126, guid: d2e995aa93412124f9ecce3f11f352a7,
+  tracerEffect: {fileID: 4248827447793293126, guid: 3f5a272ea8ea586428dcae307a2a7f99,
     type: 3}
   target: {fileID: 0}
   raycastOrigin: {fileID: 2514666334065208917}
   crosshair: {fileID: 0}
   fireRate: 10
   maxBulletsInLoad: 30
-  weaponAnimation: {fileID: 7400000, guid: 7975a520f30844f498e4bd15c8e58e66, type: 2}
---- !u!114 &3691912827332994763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2514666334164182569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0195498bd713594191f0ef5e380f639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 2514666334164182571}
 --- !u!1 &3324934589797761499
 GameObject:
   m_ObjectHideFlags: 0

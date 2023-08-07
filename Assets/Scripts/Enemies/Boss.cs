@@ -1,6 +1,7 @@
 using BehaviorDesigner.Runtime;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour, IDamageable
 {
@@ -18,6 +19,8 @@ public class Boss : MonoBehaviour, IDamageable
     [Tooltip("Amount mana will auto regen")]
     public float manaReg_amount;
 
+    public Slider healthSlider;
+    public Slider manaSlider;
 
     [HideInInspector]
     public float currentHealth;
@@ -65,6 +68,10 @@ public class Boss : MonoBehaviour, IDamageable
             mana += manaReg_amount;
             cdManaReg_timer = cdManaReg;
         }
+
+        healthSlider.value = currentHealth / maxHealth;
+        manaSlider.value = mana / maxMana;
+
         cdManaReg_timer -= Time.deltaTime;
 
         tree.GetVariable("Mana").SetValue(mana); 
