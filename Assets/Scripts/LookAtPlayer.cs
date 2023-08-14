@@ -13,6 +13,6 @@ public class LookAtPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform, Vector3.up);
     }
 }

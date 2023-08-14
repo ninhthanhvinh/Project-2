@@ -47,8 +47,7 @@ public class LevelLoader : MonoBehaviour
 
         do
         {
-            Debug.Log(scene.progress);
-            await Task.Delay(100);
+            await Task.Delay(1000);
             _progressBar.value = scene.progress;
             _progressText.text = $"{scene.progress * 100}%";
         }
@@ -57,5 +56,6 @@ public class LevelLoader : MonoBehaviour
         await Task.Delay(1000);
 
         scene.allowSceneActivation = true;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

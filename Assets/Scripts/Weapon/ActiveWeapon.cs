@@ -16,6 +16,9 @@ public class ActiveWeapon : MonoBehaviour
 
     private PlayerInput playerInput;
     private InputAction shootAction;
+    private InputAction pauseAction;
+
+    private GameManager GameManager;
 
     private bool isFiring = false;
     private float accumulatedTime;
@@ -24,12 +27,17 @@ public class ActiveWeapon : MonoBehaviour
 
     public RaycastShoot weapon;
     public Animator rigController;
+    public WeaponRecoil weaponRecoil;
+
+    private AudioManager audioManager;
     // Start is called before the first frame update
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         shootAction = playerInput.actions["Shoot"];
+        pauseAction = playerInput.actions["PauseGame"];
         weaponReload = GetComponent<WeaponReload>();
+        GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     private void Start()
@@ -39,18 +47,22 @@ public class ActiveWeapon : MonoBehaviour
         {
             Equip(existingWeapon);
         }
+
+        audioManager = AudioManager.Instance;
     }
 
     private void OnEnable()
     {
         shootAction.performed += _ => StartFiring();
         shootAction.canceled += _ => StopFiring();
+        pauseAction.performed += _ => OnPause();
     }
 
     private void OnDisable()
     {
         shootAction.performed -= _ => StartFiring();
         shootAction.canceled -= _ => StopFiring();
+        pauseAction.performed -= _ => OnPause();
     }
 
     private void StartFiring()
@@ -63,6 +75,11 @@ public class ActiveWeapon : MonoBehaviour
         isFiring = false;
     }
 
+    private void OnPause()
+    {
+        GameManager.Pause();
+        Debug.Log("Pause");
+    }
 
     // Update is called once per frame
     void Update()
@@ -74,7 +91,9 @@ public class ActiveWeapon : MonoBehaviour
                 while (accumulatedTime <= 0f)
                 {
                     weapon.FireShoot();
+                    weaponRecoil.GenerateImpulse();
                     accumulatedTime = interval;
+                    audioManager.PlaySound("RifleShot");
                 }
                 accumulatedTime -= Time.deltaTime;
             }

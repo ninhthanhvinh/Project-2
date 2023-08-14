@@ -18,6 +18,8 @@ public class Boss : MonoBehaviour, IDamageable
     float cdManaReg_timer;
     [Tooltip("Amount mana will auto regen")]
     public float manaReg_amount;
+    [Tooltip("Score gained if u killed this.")]
+    public int gainScore;
 
     public Slider healthSlider;
     public Slider manaSlider;
@@ -30,16 +32,21 @@ public class Boss : MonoBehaviour, IDamageable
     Vector2 velocity = Vector2.zero;
     BehaviorTree tree;
     Rigidbody rb;
+    GameManager gameManager;
+    AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameManager.Instance;
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         tree = GetComponent<BehaviorTree>();
         rb = GetComponent<Rigidbody>();
         currentHealth = maxHealth;
         mana = maxMana;
+        audioManager = AudioManager.Instance;
+        audioManager.PlaySound("MonsterRoar");
     }
 
     // Update is called once per frame
@@ -47,10 +54,12 @@ public class Boss : MonoBehaviour, IDamageable
     {
         //Move();
         agent.speed = speed;
-        Vector3 lookVector = player.transform.position - transform.position;
-        lookVector.y = transform.position.y;
-        Quaternion rot = Quaternion.LookRotation(lookVector);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rot, 1);
+        //Vector3 lookVector = player.transform.position - transform.position;
+        //lookVector.y = transform.position.y;
+        //Quaternion rot = Quaternion.LookRotation(lookVector);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, rot, 1);
+
+        transform.LookAt(player, Vector3.up);
 
         if (rb.velocity.magnitude > 0f)
         {
@@ -83,7 +92,10 @@ public class Boss : MonoBehaviour, IDamageable
         currentHealth -= dmg;
         if (currentHealth <= 0f)
         {
+            gameManager.score += gainScore;
+            gameManager.kill++;
             //Character died.
+            gameManager.OnWin.Invoke(1f);
         }
     }
 

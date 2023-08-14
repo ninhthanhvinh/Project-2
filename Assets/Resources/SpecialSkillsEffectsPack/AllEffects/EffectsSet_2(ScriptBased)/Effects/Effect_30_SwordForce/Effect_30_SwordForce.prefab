@@ -55,7 +55,7 @@ MonoBehaviour:
     type: 3}
   MaxLength: 0.5
   DestroyTime2: 0.3
-  dmg: 0
+  dmg: 35
 --- !u!114 &2419450685416304913
 MonoBehaviour:
   m_ObjectHideFlags: 0

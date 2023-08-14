@@ -15,6 +15,8 @@ public class WeaponReload : MonoBehaviour
     public ActiveWeapon weapon;
     public Transform leftHand;
     GameObject magazineHand;
+
+    private AudioManager audioManager;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -22,6 +24,11 @@ public class WeaponReload : MonoBehaviour
         reloadAction = playerInput.actions["Reload"];
         animationEvents.WeaponAnimationEvent.AddListener(OnAnimationEvent);
         Animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        audioManager = AudioManager.Instance;
     }
 
     private void OnEnable()
@@ -38,6 +45,7 @@ public class WeaponReload : MonoBehaviour
     public void Reload()
     {
         rigController.SetTrigger("reload");
+        audioManager.PlaySound("Reload");
     }
 
     public void OnAnimationEvent(string eventName)

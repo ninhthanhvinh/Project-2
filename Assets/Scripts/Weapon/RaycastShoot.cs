@@ -62,6 +62,8 @@ public class RaycastShoot : MonoBehaviour
 
                 tracer.transform.position = hitInfo.point;
 
+                Debug.Log(hitInfo.collider.name);
+
                 if (hitInfo.collider.GetComponent<IDamageable>() != null)
                 {
                     hitInfo.collider.GetComponent<IDamageable>().GetDamage(dmgPerBullet);

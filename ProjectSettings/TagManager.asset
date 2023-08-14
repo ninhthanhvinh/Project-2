@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
+  - WinUI
+  - PauseUI
+  - DeadUI
+  - LoseUI
   layers:
   - Default
   - TransparentFX

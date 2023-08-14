@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8396431249776149992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8396431249776149781}
+  - component: {fileID: 8396431249776149782}
+  - component: {fileID: 8396431249776149783}
+  - component: {fileID: 8396431249776149780}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8396431249776149781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8396431249776149992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2000.281, y: 950.9372, z: -3.8880968}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8396431249776149782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8396431249776149992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57616cc68da9fd84297559d1866b425c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpPauseUI:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWin:
+    m_PersistentCalls:
+      m_Calls: []
+  score: 0
+  kill: 0
+--- !u!114 &8396431249776149783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8396431249776149992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3897eccc1e4a4e3458c45c7774412249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _loaderUI: {fileID: 3075921634590346288, guid: 15585721343468644a8e7603a2dc8082,
+    type: 3}
+--- !u!114 &8396431249776149780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8396431249776149992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7f7f05a56c6744aa888356dc73b877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Theme
+    isSFX: 0
+    clip: {fileID: 8300000, guid: 4f35c366da12db244afafa4d2d58854c, type: 3}
+    volumn: 0.349
+    pitch: 0.918
+    randomVolumn: 0.107
+    randomPitch: 0.155
+    source: {fileID: 0}
+  - name: BoneDoSmth
+    isSFX: 1
+    clip: {fileID: 8300000, guid: 79719d2a450a0a4428078bbcfe591988, type: 3}
+    volumn: 0.349
+    pitch: 0.918
+    randomVolumn: 0.107
+    randomPitch: 0.155
+    source: {fileID: 0}
+  - name: RifleShot
+    isSFX: 1
+    clip: {fileID: 8300000, guid: 7b04b96611e9500439911275c0c4adbb, type: 3}
+    volumn: 0.349
+    pitch: 0.918
+    randomVolumn: 0.107
+    randomPitch: 0.155
+    source: {fileID: 0}
+  - name: MonsterRoar
+    isSFX: 1
+    clip: {fileID: 8300000, guid: 80731951254d4c041bb43779a1602786, type: 3}
+    volumn: 0.349
+    pitch: 0.918
+    randomVolumn: 0.107
+    randomPitch: 0.155
+    source: {fileID: 0}
+  - name: Reload
+    isSFX: 1
+    clip: {fileID: 8300000, guid: b1f0442308b9b6c4da9e1b09fbdb2860, type: 3}
+    volumn: 0.349
+    pitch: 0.918
+    randomVolumn: 0.107
+    randomPitch: 0.155
+    source: {fileID: 0}
+  - name: Explosion
+    isSFX: 1
+    clip: {fileID: 8300000, guid: eb4fcfe138d1b5040bfa9aa47100d27a, type: 3}
+    volumn: 1
+    pitch: 0.918
+    randomVolumn: 0.107
+    randomPitch: 0.155
+    source: {fileID: 0}
+  - name: ObeliskDestroy
+    isSFX: 1
+    clip: {fileID: 8300000, guid: b4f06fdf38d1f18419fe05cd91556440, type: 3}
+    volumn: 1
+    pitch: 0.918
+    randomVolumn: 0.107
+    randomPitch: 0.155
+    source: {fileID: 0}
+  - name: Walking
+    isSFX: 1
+    clip: {fileID: 8300000, guid: b44c31c95fbfacb44943b934c4fa3711, type: 3}
+    volumn: 1
+    pitch: 0.918
+    randomVolumn: 0.107
+    randomPitch: 0.155
+    source: {fileID: 0}
+  musicMixer: {fileID: 24300002, guid: 902511a6e7cdbe841a808e403a4054f1, type: 2}
+  sfxMixer: {fileID: 24300002, guid: e9fd20547a25ea94586b752d97378a17, type: 2}

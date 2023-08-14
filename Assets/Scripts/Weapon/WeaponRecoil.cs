@@ -5,24 +5,12 @@ using UnityEngine;
 
 public class WeaponRecoil : MonoBehaviour
 {
-    [HideInInspector]
-    public Cinemachine.CinemachineVirtualCamera playerCamera;
+    [SerializeField] CinemachineImpulseSource impulseSource;
+    [SerializeField] float impulseForce = 1f;
+    [SerializeField] float impulseTime = 0.1f;
 
-    public float verticalRecoil;
-
-    public void GenerateRecoils()
+    public void GenerateImpulse()
     {
-        //playerCamera.GetCinemachineComponent<CinemachineOrbitalTransposer>().m_ -= verticalRecoil;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        impulseSource.GenerateImpulseWithVelocity(Vector3.forward * impulseForce);
     }
 }

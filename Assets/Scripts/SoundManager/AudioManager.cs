@@ -1,8 +1,12 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
+
 [System.Serializable]
 public class Sound
 {
     public string name;
+    public bool isSFX;
     public AudioClip clip;
 
     [Range(0f, 1f)]
@@ -15,7 +19,8 @@ public class Sound
     [Range(0f, .5f)]
     public float randomPitch = .1f;
 
-    private AudioSource source;
+    [HideInInspector]
+    public AudioSource source;
 
     public void SetSource(AudioSource _source)
     {
@@ -38,26 +43,40 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     Sound[] sounds;
 
+    public AudioMixerGroup musicMixer;
+    public AudioMixerGroup sfxMixer;
+
     private void Awake()
     {
         if (Instance != null)
         {
-            Debug.LogError("More than 1 audio manager in a scene");
+            Destroy(this.gameObject);
+            //Instance = this;
         }
         else
         {
             Instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
-    }
-
-    void Start()
-    {
         for (int i = 0; i < sounds.Length; i++)
         {
             GameObject _go = new("Sound_" + i + "_" + sounds[i].name);
             _go.transform.SetParent(this.transform);
             sounds[i].SetSource(_go.AddComponent<AudioSource>());
+            if (sounds[i].isSFX)
+            {
+                sounds[i].source.outputAudioMixerGroup = sfxMixer;
+            }
+            else
+            {
+                sounds[i].source.outputAudioMixerGroup = musicMixer;
+            }
         }
+    }
+
+    void Start()
+    {
+
     }
 
     public void PlaySound(string _name)
